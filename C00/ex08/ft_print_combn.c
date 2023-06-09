@@ -45,7 +45,7 @@ void	ft_print_combn(int n)
 	c = '0';
 	while (c <= '9')
 	{
-		buf[9] = c;
+		buf[0] = c;
 		write_comb(buf, 0, n);
 		c++;
 	}

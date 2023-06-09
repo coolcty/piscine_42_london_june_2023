@@ -32,7 +32,7 @@ void	ft_print_comb2(void)
 	while (i <= 99)
 	{
 		j = i + 1;
-		while (j < 99)
+		while (j <= 99)
 		{
 			ft_write_2_digits_natural_number(i);
 			ft_putchar(' ');

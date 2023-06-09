@@ -26,12 +26,12 @@ void	ft_putnbr(int nb)
 		ft_putchar('-');
 		if (nb / 10 != 0)
 			ft_putnbr(-(nb / 10));
-		ft_putchar('0' + nb % 10 + 10);
+		ft_putchar('0' - (nb % 10));
 	}
 	else
 	{
 		if (nb / 10 != 0)
 			ft_putnbr(nb / 10);
-		ft_putchar(nb % 10);
+		ft_putchar('0' + nb % 10);
 	}
 }
