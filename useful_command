@@ -1,1 +1,4 @@
 for i in $(seq -f "%02g" 0 13); do mkdir "ex$i"; done
+
+norminette -R CheckForbiddenSourceHeader
+cc -Wall -Wextra -Werror
