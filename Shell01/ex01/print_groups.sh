@@ -1,0 +1,1 @@
+id -G ${FT_USER} -n
