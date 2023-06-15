@@ -1,13 +1,14 @@
 #!/bin/sh
 
-project="C01"
+project="C02"
 
 userpath="$HOME/piscine_42_london_june_2023/"
 test_path="$HOME/1337-Piscine-42/$project"
+#test_path="$HOME/Piscine_42_2022_JY/c02submit"
 main_path="$HOME/semi_evaluate/$project"
 
 project_path="$userpath$project"
-for i in 00 01 02 03 04 05 06 07 08 #09 10 11 12
+for i in 12 #00 01 02 03 04 05 06 07 08 09 10 11 12
 do
 	echo -e "\n TEST ex$i" 
     dir=$HOME/temp/test/ex$i/
@@ -37,8 +38,8 @@ do
     
 	norminette -R CheckForbiddenSourceHeader $project_path/ex$i/*.c $project_path/ex$i/*.h
 
-	gcc -Wall -Wextra -Werror -o $HOME/temp/ex$i/user $HOME/temp/user/ex$i/*.c
-	gcc -Wall -Wextra -Werror -o $HOME/temp/ex$i/test $HOME/temp/test/ex$i/*.c
+	gcc -Wall -Wextra -Werror  -o  $HOME/temp/ex$i/user $HOME/temp/user/ex$i/*.c -lbsd
+	gcc -Wall -Wextra -Werror  -o  $HOME/temp/ex$i/test $HOME/temp/test/ex$i/*.c -lbsd
 	#cat ${project_path}/ex$i/*
 	#read a
 	if [ -f "./ex$i/run.sh" ]; then
