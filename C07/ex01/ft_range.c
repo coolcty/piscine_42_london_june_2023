@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tochen <tochen@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 18:54:36 by tochen            #+#    #+#             */
-/*   Updated: 2023/06/15 18:54:38 by tochen           ###   ########.fr       */
+/*   Created: 2023/06/21 15:25:29 by tochen            #+#    #+#             */
+/*   Updated: 2023/06/21 15:25:31 by tochen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+#include <stdlib.h>
+
+int	*ft_range(int min, int max)
 {
-	if (n == 0)
+	int	*result;
+	int	i;
+
+	if (min >= max)
 		return (0);
-	while (*s1 && *s2 && n > 1)
+	result = malloc(sizeof(int) * (max - min));
+	if (!result)
+		return (0);
+	i = min;
+	while (i < max)
 	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		s1++;
-		s2++;
-		n--;
+		result[i - min] = i;
+		i++;
 	}
-	return (*s1 - *s2);
+	return (result);
 }

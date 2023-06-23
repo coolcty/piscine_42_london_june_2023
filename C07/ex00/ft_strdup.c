@@ -1,47 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tochen <tochen@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 16:29:56 by tochen            #+#    #+#             */
-/*   Updated: 2023/06/16 16:29:57 by tochen           ###   ########.fr       */
+/*   Created: 2023/06/21 15:04:43 by tochen            #+#    #+#             */
+/*   Updated: 2023/06/21 15:05:08 by tochen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char c)
-{
-	return (c == ' ' || (c <= 13 && c >= 9));
-}
+#include <stdlib.h>
 
-int	ft_isdigit(char c)
+int	ft_strlen(char *str)
 {
-	return (c <= '9' && c >= '0');
-}
-
-int	ft_atoi(char *str)
-{
-	long long	result;
-	int			sign;
+	int	result;
 
 	result = 0;
-	sign = 1;
-	while (ft_isspace(*str))
+	while (*str)
 	{
+		result++;
 		str++;
 	}
-	while (*str == '+' || *str == '-')
+	return (result);
+}
+
+char	*ft_strdup(char *src)
+{
+	int		len;
+	char	*result;
+
+	len = ft_strlen(src);
+	result = malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (result);
+	result[len] = 0;
+	while (len > 0)
 	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
+		result[len - 1] = src[len - 1];
+		len--;
 	}
-	while (ft_isdigit(*str))
-	{
-		result *= 10;
-		result += *str - '0';
-		str++;
-	}
-	return (result * sign);
+	return (result);
 }
