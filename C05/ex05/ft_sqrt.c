@@ -20,7 +20,7 @@ int	ft_sqrt(int nb)
 		return (0);
 	if (nb == 1)
 	{
-		return (0);
+		return (1);
 	}
 	l = 1;
 	r = nb;
