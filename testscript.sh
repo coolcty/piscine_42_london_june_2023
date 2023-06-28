@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-project="C07"
+project="C08"
 
 userpath="$HOME/piscine_42_london_june_2023/"
 test_path="$HOME/1337-Piscine-42/$project"
@@ -8,7 +8,7 @@ test_path="$HOME/1337-Piscine-42/$project"
 main_path="$HOME/semi_evaluate/$project"
 
 project_path="$userpath$project"
-for i in 00 01 02 03 04 05 #06  07 08 09 10 11 12
+for i in  05 #00 01 02  03  04 05 #06  07 08 #  09 10 11 12 00 
 do
 	echo -e "\n TEST ex$i" 
     dir=$HOME/temp/test/ex$i/
@@ -37,6 +37,8 @@ do
     cp -R $project_path/ex$i/* $HOME/temp/user/ex$i/
     
 	norminette -R CheckForbiddenSourceHeader $project_path/ex$i/*.c $project_path/ex$i/*.h
+    #norminette -R CheckDefine $project_path/ex$i/*.c $project_path/ex$i/*.h
+    
 
 	gcc -Wall -Wextra -Werror  -o  $HOME/temp/ex$i/user $HOME/temp/user/ex$i/*.c -lbsd
 	gcc -Wall -Wextra -Werror  -o  $HOME/temp/ex$i/test $HOME/temp/test/ex$i/*.c -lbsd
@@ -46,7 +48,7 @@ do
 		./ex$i/run.sh
 	else
 		
-        diff <($HOME/temp/ex$i/user) <($HOME/temp/ex$i/test)
+        diff <($HOME/temp/ex$i/user lkjdfla lkadj dajfeaf f aslfjf fdasof) <($HOME/temp/ex$i/test lkjdfla lkadj dajfeaf f aslfjf fdasof)
         #if [ -z "$diff_output" ]; then
         #    echo "\n There is no difference between the files."
             
