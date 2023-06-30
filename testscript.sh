@@ -1,6 +1,6 @@
 #!/bin/bash
 
-project="C08"
+project="C11"
 
 userpath="$HOME/piscine_42_london_june_2023/"
 test_path="$HOME/1337-Piscine-42/$project"
@@ -8,7 +8,7 @@ test_path="$HOME/1337-Piscine-42/$project"
 main_path="$HOME/semi_evaluate/$project"
 
 project_path="$userpath$project"
-for i in  05 #00 01 02  03  04 05 #06  07 08 #  09 10 11 12 00 
+for i in  00 01 02  03  04  05 06  07 # 08 #  09 10 11 12 00 
 do
 	echo -e "\n TEST ex$i" 
     dir=$HOME/temp/test/ex$i/
