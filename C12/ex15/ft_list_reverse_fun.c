@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_reverse_fun.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tochen <tochen@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/29 20:30:17 by tochen            #+#    #+#             */
-/*   Updated: 2023/06/29 20:30:19 by tochen           ###   ########.fr       */
+/*   Created: 2023/07/02 22:22:21 by tochen            #+#    #+#             */
+/*   Updated: 2023/07/02 22:22:23 by tochen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+#include"ft_list.h"
 
-typedef struct s_list
+void	ft_list_reverse_fun(t_list *begin_list)
 {
-	struct s_list	*next;
-	void			*data;
-}	t_list;
+	t_list	*l;
+	t_list	*tmp;
+	t_list	*r;
 
-t_list	*ft_create_elem(void *data);
-
-#endif
+	if (!begin_list)
+		return ;
+	l = begin_list;
+	r = l->next;
+	l->next = 0;
+	while (r)
+	{
+		tmp = r->next;
+		r->next = l;
+		l = r;
+		r = tmp;
+	}
+}

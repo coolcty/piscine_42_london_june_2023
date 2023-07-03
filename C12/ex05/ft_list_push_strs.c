@@ -16,18 +16,17 @@ t_list	*ft_list_push_strs(int size, char **strs)
 {
 	t_list	*begin_list;
 	t_list	*curr_list;
-	int		i;
 
 	if (size == 0)
 		return (0);
-	begin_list = ft_create_elem(strs[0]);
+	begin_list = ft_create_elem(strs[size - 1]);
+	size--;
 	curr_list = begin_list;
-	i = 1;
-	while (i < size)
+	while (size)
 	{
-		curr_list->next = ft_create_elem(strs[i]);
+		curr_list->next = ft_create_elem(strs[size - 1]);
 		curr_list = curr_list->next;
-		i++;
+		size--;
 	}
 	return (begin_list);
 }

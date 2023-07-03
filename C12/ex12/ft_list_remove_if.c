@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_sort.c                                     :+:      :+:    :+:   */
+/*   ft_list_remove_if.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tochen <tochen@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/01 15:54:43 by tochen            #+#    #+#             */
-/*   Updated: 2023/07/01 15:54:45 by tochen           ###   ########.fr       */
+/*   Created: 2023/07/02 16:21:50 by tochen            #+#    #+#             */
+/*   Updated: 2023/07/02 16:22:07 by tochen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<stdlib.h>
 #include "ft_list.h"
 
-void	ft_list_sort(t_list **begin_list, int (*cmp)())
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),
+void (*free_fct)(void *))
 {
 	t_list	head;
 	t_list	*curr;
-	t_list	*pos;
-	t_list	*tmp1;
-	t_list	*tmp2;
+	t_list	*pre;
 
-	head.next = 0;
-	curr = *begin_list;
+	head.next = *begin_list;
+	pre = &head;
+	curr = pre->next;
 	while (curr)
 	{
-		pos = &head;
-		while (pos->next && (*cmp)(curr->data, pos->next->data) > 0)
+		if ((*cmp)(curr->data, data_ref) == 0)
 		{
-			pos = pos->next;
+			(*free_fct)(curr->data);
+			pre->next = curr->next;
+			free(curr);
+			break ;
 		}
-		tmp1 = pos->next;
-		pos->next = curr;
-		tmp2 = curr->next;
-		curr->next = tmp1;
-		curr = tmp2;
+		pre = curr;
+		curr = curr->next;
 	}
 	*begin_list = head.next;
 }

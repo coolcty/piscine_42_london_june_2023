@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_sort.c                                     :+:      :+:    :+:   */
+/*   ft_list_merge.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tochen <tochen@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/01 15:54:43 by tochen            #+#    #+#             */
-/*   Updated: 2023/07/01 15:54:45 by tochen           ###   ########.fr       */
+/*   Created: 2023/07/02 18:37:52 by tochen            #+#    #+#             */
+/*   Updated: 2023/07/02 18:37:55 by tochen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_list_sort(t_list **begin_list, int (*cmp)())
+void	ft_list_merge(t_list **begin_list1, t_list *begin_list2)
 {
-	t_list	head;
 	t_list	*curr;
-	t_list	*pos;
-	t_list	*tmp1;
-	t_list	*tmp2;
 
-	head.next = 0;
-	curr = *begin_list;
-	while (curr)
+	if (!(*begin_list1))
 	{
-		pos = &head;
-		while (pos->next && (*cmp)(curr->data, pos->next->data) > 0)
-		{
-			pos = pos->next;
-		}
-		tmp1 = pos->next;
-		pos->next = curr;
-		tmp2 = curr->next;
-		curr->next = tmp1;
-		curr = tmp2;
+		*begin_list1 = begin_list2;
+		return ;
 	}
-	*begin_list = head.next;
+	curr = *begin_list1;
+	while (curr->next)
+	{
+		curr = curr->next;
+	}
+	curr->next = begin_list2;
 }

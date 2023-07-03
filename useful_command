@@ -2,3 +2,12 @@ for i in $(seq -f "%02g" 0 13); do mkdir "ex$i"; done
 
 norminette -R CheckForbiddenSourceHeader
 cc -Wall -Wextra -Werror
+
+# Could you write a main.c that tests the following described function as thoroughly as possible? Especially the edge cases. I do not want a simple test, but a very comprehensive one. Also remember to include all the necessary headers and include the prototype of the function being tested in the file.
+
+
+
+for i in {02..17}
+do
+    cp ex01/ft_list.h ex${i}/ft_list.h
+done
