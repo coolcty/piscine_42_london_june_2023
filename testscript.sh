@@ -1,6 +1,6 @@
 #!/bin/bash
 
-project="C12"
+project="C13"
 
 userpath="$HOME/piscine_42_london_june_2023/"
 test_path="$HOME/1337-Piscine-42/$project"
@@ -8,7 +8,7 @@ test_path="$HOME/1337-Piscine-42/$project"
 main_path="$HOME/semi_evaluate/$project"
 
 project_path="$userpath$project"
-for i in  00 01 02  03  04  05 06  07 08 09 10 11 12 13 14 15 16 17 
+for i in  07 #00 01 02  03  04  05 06  07 #08 09 10 11 12 13 14 15 16 17 
 do
 	echo -e "\n TEST ex$i" 
     dir=$HOME/temp/test/ex$i/
@@ -33,10 +33,10 @@ do
     for file in $(find $test_path/ex$i/* | grep -v 'main'); do
         cp -R $file $HOME/temp/test/ex$i/
     done
-    cp -R $test_path/ex00/ft_create_elem.c $HOME/temp/test/ex$i/
+    cp -R $test_path/ex00/btree_create_node.c $HOME/temp/test/ex$i/
 
     cp -R $project_path/ex$i/* $HOME/temp/user/ex$i/
-    cp -R $project_path/ex00/ft_create_elem.c $HOME/temp/user/ex$i/
+    cp -R $project_path/ex00/btree_create_node.c $HOME/temp/user/ex$i/
     
 	norminette -R CheckForbiddenSourceHeader $project_path/ex$i/*.c $project_path/ex$i/*.h
     #norminette -R CheckDefine $project_path/ex$i/*.c $project_path/ex$i/*.h

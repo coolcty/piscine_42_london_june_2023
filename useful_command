@@ -7,7 +7,7 @@ cc -Wall -Wextra -Werror
 
 
 
-for i in {02..17}
+for i in {01..7}
 do
-    cp ex01/ft_list.h ex${i}/ft_list.h
+    cp ex00/ft_btree.h ex${i}/ft_btree.h
 done
